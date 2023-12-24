@@ -10,12 +10,12 @@ from flask import Flask, abort
 app = Flask(__name__)
 
 @app_views.route("/states/", methods=["GET"], strict_slashes=False)
-def get_all_state3s():
+def get_all_states():
     """Return all States"""
     all_states_arr = [obj.to_dict() for obj in storage.all(State).values()]
     return jsonify(all_states_arr)
 @app_views.route("/states/<state_id>", methods=["GET"], strict_slashes=False)
-def get_state_by_id2(state_id):
+def get_state_by_id(state_id):
     """Retrieves a State object"""
     state = storage.get(State, state_id)
 
@@ -27,7 +27,7 @@ def get_state_by_id2(state_id):
 
 @app_views.route("/states/<state_id>", methods=["DELETE"],
                  strict_slashes=False)
-def delete_state_by_id2(state_id):
+def delete_state_by_id(state_id):
     """DELETE route to delete a State"""
     obj = storage.get(State, state_id)
 
