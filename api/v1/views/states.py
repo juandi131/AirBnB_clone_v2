@@ -7,7 +7,9 @@ from flask import Flask, jsonify, request
 from api.v1.views import app_views
 from flask import Flask, abort
 
+
 app = Flask(__name__)
+
 
 @app_views.route("/states/", methods=["GET"], strict_slashes=False)
 def get_all_states():
