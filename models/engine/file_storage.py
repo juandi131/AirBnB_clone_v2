@@ -70,17 +70,24 @@ class FileStorage:
         self.reload()
 
     def get(self, cls, id):
-        """get"""
-        key = cls.__name__ + "." + id
-        if key in self.all():
-            return self.all()[key]
+        """get""
+        for key, value in classes.items():
+            if cls == value:
+                cls_key = key
+        full_key = cls_key + '.' + str(id)
+        if full_key in self.__objects.keys():
+            return self.__objects[full_key]
         else:
             return None
 
     def count(self, cls=None):
-        """cout"""
-        count = 0
-        for obj in self.all().values():
-            if cls is obj.__class__ or cls is None:
-                count += 1
-        return count
+        """count"""
+        a = 0
+        if cls is None:
+            for elemento in self.__objects:
+                a += 1
+        else:
+            for elemento in self.__objects.values():
+                if elemento.__class__ == cls:
+                    a += 1
+        return i
